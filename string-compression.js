@@ -12,35 +12,35 @@ const compress = (chars) => {
     let currentChar = chars[0];
     let currentCharCount = 1;
     let firstEdited = false;
-    for(let i = 1; i < chars.length; i++) {
+    while(chars.length > 1) {
         // at last index
-        if ( i === chars.length - 1 ) {
-            if (chars[i] !== currentChar) {
-                chars[0] = chars[0] + currentChar + charCountString(currentCharCount) + chars[i];
+        if ( chars.length === 2 ) {
+            if (chars[1] !== currentChar) {
+                chars[0] = chars[0] + currentChar + charCountString(currentCharCount) + chars[1];
             } else {
                 currentCharCount++
                 chars[0] = chars[0] + currentChar + charCountString(currentCharCount);
             }
         }
 
-        if (chars[i] !== currentChar) {
+        if (chars[1] !== currentChar) {
             if (!firstEdited) {
                 firstEdited = true;
                 chars[0] = currentChar + charCountString(currentCharCount);
             } else {
                 chars[0] = chars[0] + currentChar + charCountString(currentCharCount);
             }
-            currentChar = chars[i];
+            currentChar = chars[1];
             currentCharCount = 1;
         } else {
             currentCharCount++;
         }
 
-        chars.splice(i,1);
+        chars.splice(1,1)
     }
+    chars = chars[0].split("")
     console.log(chars);
-    console.log(chars[0]);
-    return chars[0].length;
+    return chars.length;
 };
 
 testCases.forEach(testCase => {
