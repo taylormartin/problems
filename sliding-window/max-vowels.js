@@ -9,15 +9,12 @@ function maxVowels(s, k) {
     const letters = s.split('');
 
     let maxVowelCount = 0;
-    let lastVowelCount = 0;
     for (let i = 0; i < k; i++) {
-        if (vowels.includes(letters[i])) {
-            maxVowelCount++;
-            lastVowelCount++;
-        }
+        if (vowels.includes(letters[i])) maxVowelCount++;
     }
     if (maxVowelCount === k) return k;
 
+    let lastVowelCount = maxVowelCount;
     for (let i = 1; i <= letters.length - k; i++) {
         const removedLetter = letters[i - 1];
         const addedLetter = letters[i + k - 1 ];
