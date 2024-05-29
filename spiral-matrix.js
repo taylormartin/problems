@@ -4,36 +4,36 @@ const testCases = [
 ];
 
 function spiralOrder(matrix) {
-    let top = 0;
-    let left = 0;
-    let bottom = matrix.length - 1;
-    let right = matrix[0].length - 1;
+    let colBegin = 0;
+    let rowBegin = 0;
+    let rowEnd = matrix.length - 1;
+    let colEnd = matrix[0].length - 1;
     let spiralArray = [];
 
-    while (top <= bottom && left <= right) {
-        for (let i = left; i <= right; i++) {
-            const item = matrix[top][i];
+    while (colBegin <= colEnd && rowBegin <= rowEnd) {
+        for (let i = colBegin; i <= colEnd; i++) {
+            const item = matrix[rowBegin][i];
             spiralArray.push(item)
         }
-        top++;
+        rowBegin++;
 
-        for (let i = top; i <= bottom; i++) {
-            const item = matrix[i][right];
+        for (let i = rowBegin; i <= rowEnd; i++) {
+            const item = matrix[i][colEnd];
             spiralArray.push(item)
         }
-        right--;
+        colEnd--;
 
-        for (let i = right; i >= left; i--) {
-            const item = matrix[bottom][i];
+        for (let i = colEnd; i >= colBegin; i--) {
+            const item = matrix[i][rowEnd];
             spiralArray.push(item)
         }
-        bottom--;
+        rowEnd--;
 
-        for (let i = bottom; i >= top; i--) {
-            const item =  matrix[i][left];
+        for (let i = rowEnd; i >= rowBegin; i--) {
+            const item =  matrix[colBegin][i];
             spiralArray.push(item)
         }
-        left++;
+        colBegin++;
     }
     return spiralArray;
 }
