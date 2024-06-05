@@ -23,15 +23,20 @@ function spiralOrder(matrix) {
         }
         colEnd--;
 
-        for (let i = colEnd; i >= colBegin; i--) {
-            const item = matrix[i][rowEnd];
-            spiralArray.push(item)
+        if (rowBegin <= rowEnd) {
+
+            for (let i = colEnd; i >= colBegin; i--) {
+                const item = matrix[rowEnd][i];
+                spiralArray.push(item)
+            }
         }
         rowEnd--;
 
-        for (let i = rowEnd; i >= rowBegin; i--) {
-            const item =  matrix[colBegin][i];
-            spiralArray.push(item)
+        if (colBegin <= colEnd) {
+            for (let i = rowEnd; i >= rowBegin; i--) {
+                const item = matrix[i][colBegin];
+                spiralArray.push(item)
+            }
         }
         colBegin++;
     }
